@@ -26,7 +26,7 @@ var a = $LO({"test": "test",
 
                      return this.subarray[2] + " computed function work!";
                  }),
-                 "eventable": $LO.eventable("eventable function", {
+                 "eventable": $LO.eventable("eventable string", {
                      "onSet": function (newValue, eventTarget, eventType, dataField) {
                          console.log('on set handler. responsed value: ' + newValue);
                          console.log(eventTarget);
@@ -42,20 +42,36 @@ var a = $LO({"test": "test",
                  })
              },
              "test3": "blabla",
-             "test4": $LO.bind("#test", "checked")
+             "test4": $LO.bind("#test", "checked", false), //полностью объект разворачивается в .element
+             "test41": $LO.bind("#test", "disabled"),
+             "test42": $LO.bind("#test", "visible", true),
+             "test43": $LO.bind("#test", "value", "value"),
+             "test44": $LO.bind("#test", "@test"),
+             "test45": $LO.bind("#test", "class"),
+             "test5": $LO.element(".test", {
+                 "@attr1": "",
+                 "@attr...": this,
+                 "innerText": "",
+                 "value": "",
+                 "checked": "_CHECKED_",
+                 "selected": "_SELECTED_",
+                 "classes": [],
+                 "handlers": {}
+             }, [{"test": "bla!"}]),
+             "test6": "ok"
              }, {
                 /* common events handlers */
                 "onSet": function (newValue, eventTarget, eventType, dataField) {
                      console.log('common set handler. responsed value: ' + newValue);
                 },
                 "onGet": function (value, eventType, dataField) {
-                     console.log('common get handler. value: ' + value);
+                     //console.log('common get handler. value: ' + value);
                 },
                 "onPush": function (value, eventType) {
                     console.log("common push handler. value: " + value);
                     console.log(this);
                 },
-                "onDelete": function (numder, eventType, dataField) {
+                "onDelete": function (number, eventType, dataField) {
                     console.log("common delete handler");
                     console.log(this);
                 }
